@@ -12,6 +12,7 @@ CPlusPlusCmakeTemplate [![Build Status](https://travis-ci.org/jaredsburrows/CPlu
 #### Libraries:
 |Name|Version|Description|
 |---|---|---|
+| [Boost](http://www.boost.org/) | 1.5.8 | Cross Compatible C++ Libraries |
 | [Protobuf](https://github.com/google/protobuf) | 3.0.0 | Google Protocol Buffer |
 
 #### Testing Frameworks:
