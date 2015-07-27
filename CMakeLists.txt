@@ -62,8 +62,9 @@ endif()
 #######################
 
 # Testing
-add_subdirectory(lib/gtest-1.7.0)
 enable_testing()
+
+add_subdirectory(lib/gtest-1.7.0)
 include_directories(lib/gtest-1.7.0/include)
 
 #add_subdirectory(lib/gmock-1.7.0)
@@ -78,6 +79,5 @@ include_directories(include)
 
 # Sample Module
 add_subdirectory(src)
-
 
 
