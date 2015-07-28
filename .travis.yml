@@ -42,8 +42,7 @@ before_install:
 
 script:
  # Run cmake
- - rm -rf build/ && mkdir build/ && cd build/ && cmake ..
-
+ - rm -rf build/ && mkdir build/ && cd build/ && cmake .. && cmake --build . && ctest
 after_success:
  # Build and run tests
  - make && make test

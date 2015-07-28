@@ -36,10 +36,7 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -ldl")
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     message(STATUS "Using MSVC")
-    add_definitions(
-        /Wall
-        /D "_CRT_SECURE_NO_WARNINGS"
-    )
+    add_definitions(/MDd /WX- /Wall /D "_CRT_SECURE_NO_WARNINGS")
     # Enable multi-process compilation.
     if (NOT MSVC60 AND NOT MSVC70 AND NOT MSVC71)
         List(APPEND CFLAGS /MP)
@@ -64,11 +61,9 @@ endif()
 # Testing
 enable_testing()
 
-add_subdirectory(lib/gtest-1.7.0)
-include_directories(lib/gtest-1.7.0/include)
-
-#add_subdirectory(lib/gmock-1.7.0)
-#include_directories(lib/gmock-1.7.0/include)
+add_subdirectory(lib/gmock-1.7.0)
+include_directories(lib/gmock-1.7.0/include)
+include_directories(lib/gmock-1.7.0/gtest/include)
 
 #######################
 # Project Sources
@@ -79,5 +74,4 @@ include_directories(include)
 
 # Sample Module
 add_subdirectory(src)
-
 

@@ -1,7 +1,7 @@
 CPlusPlusCmakeTemplate [![Build Status](https://travis-ci.org/jaredsburrows/CPlusPlusCmakeTemplate.svg?branch=master)](https://travis-ci.org/jaredsburrows/CPlusPlusCmakeTemplate)
 =========
 
-**C++ Cmake + GTest + GMock Template**
+**C++ CMake + Boost + Protobuf + GTest + GMock Template**
 
 ## Technologies used:
 #### Build Tools:

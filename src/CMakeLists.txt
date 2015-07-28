@@ -18,8 +18,9 @@ set(TEST_SOURCE
     test/main_test.cpp
 )
 
-add_executable(main_test ${SOURCE})
+add_executable(main_test ${TEST_SOURCE})
 
-target_link_libraries(main_test gtest_main)
+target_link_libraries(main_test gmock gmock_main gtest gtest_main)
 
 add_test(main_test main_test)
+
