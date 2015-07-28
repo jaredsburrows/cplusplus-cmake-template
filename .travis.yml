@@ -1,23 +1,26 @@
 language: cpp
 
-os:
-  - linux
-  - osx
-
 compiler:
-  - gcc
   - clang
+  - gcc
 
 addons:
   apt:
     sources:
+    - boost-latest
+    - llvm-toolchain-precise-3.6
     - ubuntu-toolchain-r-test
     packages:
+    - clang-3.6
+    # Latest GCC for C++14
     - gcc-5
     - g++-5
-    - clang-3.7
-    - libboost-dev
-    - libprotobuf-dev 
+    # Boost
+    - libboost-system1.55-dev 
+    - libboost-filesystem1.55-dev 
+    - libboost-program-options1.55-dev
+    # Protobuf
+    - libprotobuf-dev
     - protobuf-compiler
 
 matrix:
@@ -26,21 +29,13 @@ matrix:
     - os: osx
 
 before_install:
-  # Prepare compilers
+  # Prepare compiler
   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
-
-  # Debug information
-  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then lsb_release -a; fi
-  - uname -a
-  - $CC --version
-  - $CXX --version
+  - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.6" CC="clang-3.6"; fi
 
 script:
- # Run cmake
+ # Build and run the tests
  - rm -rf build/ && mkdir build/ && cd build/ && cmake .. && cmake --build . && ctest
-after_success:
- # Build and run tests
- - make && make test
 
 notifications:
   email: false
