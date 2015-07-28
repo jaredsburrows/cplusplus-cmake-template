@@ -15,12 +15,10 @@ addons:
     packages:
     - gcc-5
     - g++-5
-    - clang
-
-env:
-  global:
-    - LIBSTDC_VERSION=5
-    - CLANG_VERSION=3.6
+    - clang-3.7
+    - libboost-dev
+    - libprotobuf-dev 
+    - protobuf-compiler
 
 matrix:
   allow_failures:
@@ -28,9 +26,6 @@ matrix:
     - os: osx
 
 before_install:
-  # Setup cmake
-  - sh scripts/install-cmake.sh
-
   # Prepare compilers
   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
 
@@ -50,7 +45,7 @@ after_success:
 notifications:
   email: false
 
-sudo: required
+sudo: false
 
 cache:
   - apt

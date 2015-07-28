@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
-project(CPlusPlusCmakeTemplate CXX)
+cmake_minimum_required(VERSION 2.8)
+project(CPlusPlusCmakeTemplate)
 include(CTest)
 include(ExternalProject)
+include(FindBoost)
+include(FindProtobuf)
 
 #######################
 # Project Setup
@@ -47,12 +49,18 @@ endif()
 # Project Dependencies
 #######################
 
-# Make sure Boost is installed
-#find_package(Boost COMPONENTS system filesystem REQUIRED)
-#if(Boost_FOUND)
-#    include_directories(${Boost_INCLUDE_DIR})
-#    add_definitions("-DHAS_BOOST")
-#endif()
+# Boost
+find_package(Boost COMPONENTS program_options filesystem system REQUIRED)
+if(Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+    add_definitions("-DHAS_BOOST")
+endif()
+
+# Protobuf
+find_package(Protobuf REQUIRED)
+if(Protobuf_FOUND)
+    include_directories(${Protobuf_INCLUDE_DIRS})
+endif()
 
 #######################
 # Test Dependencies
@@ -61,6 +69,7 @@ endif()
 # Testing
 enable_testing()
 
+# GTest + GMock
 add_subdirectory(lib/gmock-1.7.0)
 include_directories(lib/gmock-1.7.0/include)
 include_directories(lib/gmock-1.7.0/gtest/include)
