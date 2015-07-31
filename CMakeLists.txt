@@ -45,14 +45,14 @@ endif()
 #######################
 
 # Boost
-find_package(Boost COMPONENTS program_options filesystem system REQUIRED)
+find_package(Boost COMPONENTS program_options filesystem system)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     add_definitions("-DHAS_BOOST")
 endif()
 
 # Protobuf
-find_package(Protobuf REQUIRED)
+find_package(Protobuf)
 if(Protobuf_FOUND)
     include_directories(${Protobuf_INCLUDE_DIRS})
 endif()
