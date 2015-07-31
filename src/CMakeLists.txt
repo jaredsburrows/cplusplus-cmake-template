@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+cmake_minimum_required(VERSION 2.8)
 
 #######################
 # Main
@@ -10,8 +10,10 @@ set(SOURCE
 
 add_executable(main ${SOURCE})
 
+target_link_libraries(main ${Boost_LIBRARIES} ${Protobuf_LIBRARIES})
+
 #######################
-# Main
+# Main Tests
 #######################
 
 set(TEST_SOURCE    
@@ -20,7 +22,7 @@ set(TEST_SOURCE
 
 add_executable(main_test ${TEST_SOURCE})
 
-target_link_libraries(main_test gmock gmock_main gtest gtest_main)
+target_link_libraries(main_test ${Boost_LIBRARIES} ${Protobuf_LIBRARIES} gmock gmock_main gtest gtest_main)
 
 add_test(main_test main_test)
 

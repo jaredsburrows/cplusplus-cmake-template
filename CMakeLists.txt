@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
-project(CPlusPlusCmakeTemplate CXX)
+cmake_minimum_required(VERSION 2.8)
+project(CPlusPlusCmakeTemplate)
 include(CTest)
 include(ExternalProject)
+include(FindBoost)
+include(FindProtobuf)
 
 #######################
 # Project Setup
@@ -32,6 +34,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -ldl")
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     message(STATUS "Using GCC")
+    set(CMAKE_CXX_FLAGS "-std=c++11")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SHARED_FLAGS} -std=c++11 -pthread -ldl")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -ldl")
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
@@ -47,12 +50,18 @@ endif()
 # Project Dependencies
 #######################
 
-# Make sure Boost is installed
-#find_package(Boost COMPONENTS system filesystem REQUIRED)
-#if(Boost_FOUND)
-#    include_directories(${Boost_INCLUDE_DIR})
-#    add_definitions("-DHAS_BOOST")
-#endif()
+# Boost
+find_package(Boost COMPONENTS program_options filesystem system REQUIRED)
+if(Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+    add_definitions("-DHAS_BOOST")
+endif()
+
+# Protobuf
+find_package(Protobuf REQUIRED)
+if(Protobuf_FOUND)
+    include_directories(${Protobuf_INCLUDE_DIRS})
+endif()
 
 #######################
 # Test Dependencies
@@ -61,6 +70,7 @@ endif()
 # Testing
 enable_testing()
 
+# GTest + GMock
 add_subdirectory(lib/gmock-1.7.0)
 include_directories(lib/gmock-1.7.0/include)
 include_directories(lib/gmock-1.7.0/gtest/include)
