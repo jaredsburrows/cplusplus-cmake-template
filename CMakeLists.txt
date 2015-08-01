@@ -18,23 +18,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #######################
 
 # All Warnings # -Werror -pedantic
-set(WARNING_FLAGS "-Wall -Wextra ")
-set(SHARED_FLAGS "${WARNING_FLAGS} ${SECURITY_FLAGS}")
+set(WARNING_FLAGS "-v -Wall -Wextra ")
+set(SHARED_FLAGS "${WARNING_FLAGS}")
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR
     "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
     message(STATUS "Using Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SHARED_FLAGS} -std=c++11 -stdlib=libc++")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -ldl")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SHARED_FLAGS} -std=c++14 -stdlib=libc++")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++")
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     message(STATUS "Using GCC")
     set(CMAKE_CXX_FLAGS "-std=c++11")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SHARED_FLAGS} -std=c++14 -pthread -ldl")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -ldl")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SHARED_FLAGS} -std=c++14 -pthread")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread")
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     message(STATUS "Using MSVC")
     add_definitions(/MDd /WX- /Wall /D "_CRT_SECURE_NO_WARNINGS")
-    # Enable multi-process compilation.
+    # Enable multi-process compilation
     if (NOT MSVC60 AND NOT MSVC70 AND NOT MSVC71)
         List(APPEND CFLAGS /MP)
     endif()
