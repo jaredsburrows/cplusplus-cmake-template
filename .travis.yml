@@ -1,5 +1,9 @@
 language: cpp
 
+os:
+  - linux
+  - osx
+
 compiler:
   - clang
   - gcc
@@ -35,7 +39,7 @@ before_install:
 
 script:
  # Build and run the tests
- - rm -rf build/ && mkdir build/ && cd build/ && cmake .. && cmake --build . && ctest
+ - rm -rf "build" && mkdir "build" && cd "build" && cmake .. && cmake --build . && ctest
 
 notifications:
   email: false
