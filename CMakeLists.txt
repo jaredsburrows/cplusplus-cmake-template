@@ -18,20 +18,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #######################
 
 # All Warnings # -Werror -pedantic
-set(WARNING_FLAGS "-v -Wall -Wextra ")
+set(WARNING_FLAGS "-Wall -Wextra ")
 set(SHARED_FLAGS "${WARNING_FLAGS}")
 
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR
     "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
     message(STATUS "Using Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SHARED_FLAGS} -std=c++14 -stdlib=libc++")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++")
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     message(STATUS "Using GCC")
     set(CMAKE_CXX_FLAGS "-std=c++11")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SHARED_FLAGS} -std=c++14 -pthread")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread")
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     message(STATUS "Using MSVC")
     add_definitions(/MDd /WX- /Wall /D "_CRT_SECURE_NO_WARNINGS")
     # Enable multi-process compilation
@@ -44,11 +44,20 @@ endif()
 # Project Dependencies
 #######################
 
+if(${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
+    # Windows or just missing the library
+    # Boost
+    set(BOOST_ROOT "")               
+    set(Boost_USE_STATIC_LIBS ON)    
+    set(Boost_USE_MULTITHREADED ON)
+    # Protobuf
+    set(PROTOBUF_SRC_ROOT_FOLDER "")
+endif()
+
 # Boost
 find_package(Boost COMPONENTS program_options filesystem system)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
-    add_definitions("-DHAS_BOOST")
 endif()
 
 # Protobuf
