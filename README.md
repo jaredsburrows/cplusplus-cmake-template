@@ -1,4 +1,4 @@
-CPlusPlusCmakeTemplate [![Build Status](https://travis-ci.org/jaredsburrows/CPlusPlusCmakeTemplate.svg?branch=master)](https://travis-ci.org/jaredsburrows/CPlusPlusCmakeTemplate)
+CPlusPlusCmakeTemplate [![Build Status](https://travis-ci.org/jaredsburrows/cplusplus-cmake-template.svg?branch=master)](https://travis-ci.org/jaredsburrows/cplusplus-cmake-template)
 =========
 
 **C++ CMake + GTest + GMock Template**
