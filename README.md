@@ -1,5 +1,8 @@
-CPlusPlusCmakeTemplate [![Build Status](https://travis-ci.org/jaredsburrows/cplusplus-cmake-template.svg?branch=master)](https://travis-ci.org/jaredsburrows/cplusplus-cmake-template)
+CPlusPlusCmakeTemplate 
 =========
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Build Status](https://travis-ci.org/jaredsburrows/cplusplus-cmake-template.svg?branch=master)](https://travis-ci.org/jaredsburrows/cplusplus-cmake-template)
 
 **C++ CMake + GTest + GMock Template**
 
@@ -33,19 +36,3 @@ CPlusPlusCmakeTemplate [![Build Status](https://travis-ci.org/jaredsburrows/cplu
 #### Debian:
     sudo apt-get install cmake libboost-system1.55-dev libboost-filesystem1.55-dev libboost-program-options1.55-dev libprotobuf-dev protobuf-compiler
 
-License
-=========
-
-    Copyright (C) 2015 CPlusPlusCmakeTemplate by Jared Burrows
-   
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
