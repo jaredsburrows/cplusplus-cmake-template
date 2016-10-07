@@ -3,6 +3,7 @@ CPlusPlusCmakeTemplate
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Build Status](https://travis-ci.org/jaredsburrows/cplusplus-cmake-template.svg?branch=master)](https://travis-ci.org/jaredsburrows/cplusplus-cmake-template)
+[![Twitter Follow](https://img.shields.io/twitter/follow/jaredsburrows.svg?style=social)](https://twitter.com/jaredsburrows)
 
 **C++ CMake + GTest + GMock Template**
 
