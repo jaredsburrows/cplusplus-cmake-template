@@ -7,11 +7,6 @@ CPlusPlusCmakeTemplate
 
 **C++ CMake + GTest + GMock Template**
 
-## Platforms Supported:
- - Linux
- - Mac OSX
- - Windows *soon*
-
 ## Technologies used:
 #### Build Tools:
 |Name|Version|Description|
@@ -31,8 +26,6 @@ CPlusPlusCmakeTemplate
 | [GMock](http://code.google.com/p/googletest/) | 1.7.0 | C++ Mocking Framework |
 
 ## Install libraries:
-#### Mac OSX:
-    brew install cmake boost protobuf
 
 #### Debian:
     sudo apt-get install cmake libboost-system1.55-dev libboost-filesystem1.55-dev libboost-program-options1.55-dev libprotobuf-dev protobuf-compiler
